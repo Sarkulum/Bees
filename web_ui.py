@@ -14,8 +14,6 @@ dht_sensor = adafruit_dht.DHT11(pin=DHT_PIN)
 # Initialize an error log
 error_log = []
 
-temperature_status = "Initializing..."
-
 def log_error(message):
     """Logs errors to the error log."""
     global error_log
@@ -65,13 +63,13 @@ def turn_off():
 @app.route('/check_temperature')
 def check_temperature():
     """Refresh temperature and redirect to home."""
-    global temperature_status
     temperature = get_temperature()
     if temperature is not None:
         temperature_status = f"{temperature}°C"
     else:
         temperature_status = "Sensor Error"
         log_error("Failed to retrieve temperature")
+
     return redirect(url_for('index'))
 
 @app.route('/error_log')
@@ -79,6 +77,5 @@ def show_error_log():
     """Displays the error log."""
     return render_template('error_log.html', error_log=error_log)
 
-def start_flask_app():
-    """Starts the Flask app."""
+if __name__ == '__main__':
     app.run(host='192.168.178.74', port=5000)
