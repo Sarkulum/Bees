@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspberry Pi Device Control</title>
+</head>
+<body>
+    <h1>Raspberry Pi Device Control</h1>
+
+    <!-- Display temperature status -->
+    <h2>Current Temperature: {{ temperature_status }}</h2>
+
+    <!-- Device control buttons -->
+    <div>
+        <button onclick="window.location.href='/turn_on'">Turn Device On</button>
+        <button onclick="window.location.href='/turn_off'">Turn Device Off</button>
+        <button onclick="window.location.href='/check_temperature'">Refresh Temperature</button>
+    </div>
+
+    <br>
+    <h3>Developer Options</h3>
+    <button onclick="window.location.href='/edit'">Edit Code</button>
+
+    <br>
+    <p><a href="/">Refresh</a></p>
+</body>
+</html>
