@@ -20,7 +20,7 @@ def is_it_hot():
             elif temperature <= 19.0:
                 return False  # Cold
             else:
-                print("Temperature is okay.")
+                print(f"Temperature is okay. {temperature}°C")
         else:
             print("Error reading sensor data.")
             return None  # Return None if reading fails
