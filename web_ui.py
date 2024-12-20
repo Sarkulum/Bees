@@ -14,6 +14,8 @@ dht_sensor = adafruit_dht.DHT11(pin=DHT_PIN)
 # Initialize an error log
 error_log = []
 
+temperature_status = "Initializing..."
+
 def log_error(message):
     """Logs errors to the error log."""
     global error_log
@@ -62,11 +64,13 @@ def turn_off():
 
 @app.route('/check_temperature')
 def check_temperature():
-    # Refresh temperature reading
+    """Refresh temperature and redirect to home."""
+    global temperature_status
     temperature = get_temperature()
     if temperature is not None:
-        print(f"Current temperature: {temperature}°C")
+        temperature_status = f"{temperature}°C"
     else:
+        temperature_status = "Sensor Error"
         log_error("Failed to retrieve temperature")
     return redirect(url_for('index'))
 
