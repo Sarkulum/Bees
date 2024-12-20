@@ -77,5 +77,6 @@ def show_error_log():
     """Displays the error log."""
     return render_template('error_log.html', error_log=error_log)
 
-if __name__ == '__main__':
+def start_flask_app():
+    """Starts the Flask app."""
     app.run(host='192.168.178.74', port=5000)
